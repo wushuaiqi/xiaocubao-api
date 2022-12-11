@@ -13,4 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserRoleService extends IService<UserRole> {
 
+    /**
+     * 创建用户的初始化的用户权限关联
+     * @param id 用户的id
+     */
+    void create(Long id);
 }

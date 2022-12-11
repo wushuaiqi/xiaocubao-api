@@ -104,6 +104,7 @@ public class Generator {
                 // 开启 @Mapper 注解
                 .enableMapperAnnotation()
                 .formatMapperFileName("%sRepository")
+                .formatXmlFileName("%sRepository")
                 .build();
 
         AutoGenerator autoGenerator = new AutoGenerator(dataSource);

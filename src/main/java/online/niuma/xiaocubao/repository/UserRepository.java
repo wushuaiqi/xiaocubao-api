@@ -2,7 +2,9 @@ package online.niuma.xiaocubao.repository;
 
 import online.niuma.xiaocubao.pojo.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import online.niuma.xiaocubao.pojo.entity.UserDetail;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * <p>
@@ -14,5 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface UserRepository extends BaseMapper<User> {
+
+    UserDetail searchByUsernameDetail(@Param("username") String username);
 
 }

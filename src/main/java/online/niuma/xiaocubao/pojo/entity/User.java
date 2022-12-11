@@ -1,16 +1,14 @@
 package online.niuma.xiaocubao.pojo.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.Version;
-import java.io.Serializable;
-import online.niuma.xiaocubao.pojo.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+import online.niuma.xiaocubao.pojo.BaseEntity;
 
 /**
  * <p>
@@ -22,6 +20,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 @TableName("tb_user")
 @ApiModel(value = "User对象", description = "用户表")
 public class User extends BaseEntity {

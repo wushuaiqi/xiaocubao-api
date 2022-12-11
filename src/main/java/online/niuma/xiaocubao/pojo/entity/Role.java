@@ -1,14 +1,11 @@
 package online.niuma.xiaocubao.pojo.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import online.niuma.xiaocubao.pojo.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import online.niuma.xiaocubao.pojo.BaseEntity;
 
 /**
  * <p>

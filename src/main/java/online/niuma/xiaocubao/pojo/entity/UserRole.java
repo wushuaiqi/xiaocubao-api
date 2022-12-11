@@ -1,12 +1,11 @@
 package online.niuma.xiaocubao.pojo.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.io.Serializable;
-import online.niuma.xiaocubao.pojo.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 /**
  * <p>
@@ -18,9 +17,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString
 @TableName("tb_user_role")
 @ApiModel(value = "UserRole对象", description = "用户角色表")
-public class UserRole extends BaseEntity {
+public class UserRole {
 
     private static final long serialVersionUID = 1L;
 
