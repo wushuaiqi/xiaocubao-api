@@ -3,6 +3,7 @@ package online.niuma.xiaocubao.service;
 import online.niuma.xiaocubao.pojo.dto.UserDto;
 import online.niuma.xiaocubao.pojo.request.CreateUserRequest;
 import online.niuma.xiaocubao.pojo.request.TokenCreateRequest;
+import online.niuma.xiaocubao.pojo.request.UpdateUserRequest;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -44,4 +45,12 @@ public interface IUserService extends UserDetailsService {
      * @param id 用户id
      */
     void delete(Long id);
+
+    /**
+     * 更改用户的信息
+     * @param id 用户的 id
+     * @param updateUserRequest 用户的更新信息
+     * @return 用户更新后的信息
+     */
+    UserDto update(Long id, UpdateUserRequest updateUserRequest);
 }

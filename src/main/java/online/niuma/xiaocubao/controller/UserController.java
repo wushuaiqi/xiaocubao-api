@@ -2,6 +2,7 @@ package online.niuma.xiaocubao.controller;
 
 import online.niuma.xiaocubao.Mapper.UserMapper;
 import online.niuma.xiaocubao.pojo.request.CreateUserRequest;
+import online.niuma.xiaocubao.pojo.request.UpdateUserRequest;
 import online.niuma.xiaocubao.pojo.vo.UserVo;
 import online.niuma.xiaocubao.service.IUserService;
 import org.springframework.validation.annotation.Validated;
@@ -37,6 +38,13 @@ public class UserController {
     @RolesAllowed({"ROLE_ADMIN"})
     public void delete(@PathVariable Long id) {
         userService.delete(id);
+    }
+
+    @PutMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
+    public UserVo update(@PathVariable Long id,
+                         @Validated @RequestBody UpdateUserRequest updateUserRequest) {
+        return userMapper.toVo(userService.update(id, updateUserRequest));
     }
 
 }

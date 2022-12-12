@@ -13,6 +13,7 @@ import online.niuma.xiaocubao.pojo.entity.User;
 import online.niuma.xiaocubao.pojo.entity.UserDetail;
 import online.niuma.xiaocubao.pojo.request.CreateUserRequest;
 import online.niuma.xiaocubao.pojo.request.TokenCreateRequest;
+import online.niuma.xiaocubao.pojo.request.UpdateUserRequest;
 import online.niuma.xiaocubao.repository.UserRepository;
 import online.niuma.xiaocubao.service.IUserRoleService;
 import online.niuma.xiaocubao.service.IUserService;
@@ -89,6 +90,17 @@ public class UserServiceImpl implements IUserService {
     public void delete(Long id) {
         userRoleService.deleteByUserId(id);
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public UserDto update(Long id, UpdateUserRequest updateUserRequest) {
+        User user = userRepository.selectById(id);
+        if (user == null) {
+            throw new BizException(ExceptionType.USER_NOT_FOUND);
+        }
+        user = userMapper.updateEntity(user, updateUserRequest);
+        userRepository.updateById(user);
+        return userMapper.toDto(user);
     }
 
 
