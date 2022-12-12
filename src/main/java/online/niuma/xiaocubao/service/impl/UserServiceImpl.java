@@ -84,6 +84,14 @@ public class UserServiceImpl implements IUserService {
         return userMapper.detailToDto(userDetail);
     }
 
+    @Transactional(rollbackFor = RuntimeException.class)
+    @Override
+    public void delete(Long id) {
+        userRoleService.deleteByUserId(id);
+        userRepository.deleteById(id);
+    }
+
+
     /**
      * 验证用户是否存在
      * @param username 用户名

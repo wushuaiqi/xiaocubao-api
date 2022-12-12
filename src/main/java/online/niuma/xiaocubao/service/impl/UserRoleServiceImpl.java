@@ -29,4 +29,10 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleRepository, UserRol
         userRole.setRoleId(1L);
         repository.insert(userRole);
     }
+
+    @Override
+    public void deleteByUserId(Long id) {
+        repository.deleteByUserId(id);
+    }
+
 }

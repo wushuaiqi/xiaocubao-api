@@ -18,4 +18,10 @@ public interface IUserRoleService extends IService<UserRole> {
      * @param id 用户的id
      */
     void create(Long id);
+
+    /**
+     * 根据用户的id删除记录
+     * @param id 用户id
+     */
+    void deleteByUserId(Long id);
 }

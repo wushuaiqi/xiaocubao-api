@@ -5,10 +5,7 @@ import online.niuma.xiaocubao.pojo.request.CreateUserRequest;
 import online.niuma.xiaocubao.pojo.vo.UserVo;
 import online.niuma.xiaocubao.service.IUserService;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.annotation.security.RolesAllowed;
@@ -34,6 +31,12 @@ public class UserController {
     @RolesAllowed({"ROLE_ADMIN"})
     public UserVo create(@Validated @RequestBody CreateUserRequest createUserRequest) {
         return userMapper.toVo(userService.create(createUserRequest));
+    }
+
+    @DeleteMapping("/{id}")
+    @RolesAllowed({"ROLE_ADMIN"})
+    public void delete(@PathVariable Long id) {
+        userService.delete(id);
     }
 
 }

@@ -38,4 +38,10 @@ public interface IUserService extends UserDetailsService {
      * @return 创建用户后的信息
      */
     UserDto create(CreateUserRequest createUserRequest);
+
+    /**
+     * 根据用户的id删除用户的信息
+     * @param id 用户id
+     */
+    void delete(Long id);
 }
