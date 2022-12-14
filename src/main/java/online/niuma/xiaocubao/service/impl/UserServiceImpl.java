@@ -19,6 +19,8 @@ import online.niuma.xiaocubao.repository.UserRepository;
 import online.niuma.xiaocubao.service.IRoleService;
 import online.niuma.xiaocubao.service.IUserRoleService;
 import online.niuma.xiaocubao.service.IUserService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -118,6 +120,13 @@ public class UserServiceImpl implements IUserService {
         UserDto userDto = userMapper.toDto(user);
         userDto.setRoles(roles);
         return userDto;
+    }
+
+    @Override
+    public UserDto getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetail userDetail = loadUserByUsername(authentication.getName());
+        return userMapper.detailToDto(userDetail);
     }
 
 

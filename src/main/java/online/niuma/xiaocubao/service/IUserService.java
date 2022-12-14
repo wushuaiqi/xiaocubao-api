@@ -60,4 +60,10 @@ public interface IUserService extends UserDetailsService {
      * @return 用户的信息
      */
     UserDto get(String id);
+
+    /**
+     * 获取当前登陆用户的信息
+     * @return 当前登陆用户的信息
+     */
+    UserDto getCurrentUser();
 }

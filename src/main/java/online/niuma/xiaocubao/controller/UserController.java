@@ -52,4 +52,9 @@ public class UserController {
         return userMapper.toVo(userService.get(id));
     }
 
+    @GetMapping("/me")
+    public UserVo me() {
+        return userMapper.toVo(userService.getCurrentUser());
+    }
+
 }
