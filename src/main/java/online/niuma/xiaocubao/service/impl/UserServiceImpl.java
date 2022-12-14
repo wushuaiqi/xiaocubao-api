@@ -8,6 +8,7 @@ import online.niuma.xiaocubao.Mapper.UserMapper;
 import online.niuma.xiaocubao.cofig.SecurityConfig;
 import online.niuma.xiaocubao.exception.BizException;
 import online.niuma.xiaocubao.exception.ExceptionType;
+import online.niuma.xiaocubao.pojo.dto.RoleDto;
 import online.niuma.xiaocubao.pojo.dto.UserDto;
 import online.niuma.xiaocubao.pojo.entity.User;
 import online.niuma.xiaocubao.pojo.entity.UserDetail;
@@ -15,6 +16,7 @@ import online.niuma.xiaocubao.pojo.request.CreateUserRequest;
 import online.niuma.xiaocubao.pojo.request.TokenCreateRequest;
 import online.niuma.xiaocubao.pojo.request.UpdateUserRequest;
 import online.niuma.xiaocubao.repository.UserRepository;
+import online.niuma.xiaocubao.service.IRoleService;
 import online.niuma.xiaocubao.service.IUserRoleService;
 import online.niuma.xiaocubao.service.IUserService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -24,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -45,6 +48,8 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
     @Resource
     private IUserRoleService userRoleService;
+    @Resource
+    private IRoleService roleService;
 
     @Override
     public UserDetail loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -101,6 +106,18 @@ public class UserServiceImpl implements IUserService {
         user = userMapper.updateEntity(user, updateUserRequest);
         userRepository.updateById(user);
         return userMapper.toDto(user);
+    }
+
+    @Override
+    public UserDto get(String id) {
+        User user = userRepository.selectById(id);
+        if (user == null) {
+            throw new BizException(ExceptionType.USER_NOT_FOUND);
+        }
+        List<RoleDto> roles = roleService.getByUserId(user.getId());
+        UserDto userDto = userMapper.toDto(user);
+        userDto.setRoles(roles);
+        return userDto;
     }
 
 

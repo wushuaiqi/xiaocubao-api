@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import online.niuma.xiaocubao.pojo.BaseEntity;
 
 /**
@@ -17,6 +18,7 @@ import online.niuma.xiaocubao.pojo.BaseEntity;
  */
 @Getter
 @Setter
+@ToString
 @TableName("tb_role")
 @ApiModel(value = "Role对象", description = "角色表")
 public class Role extends BaseEntity {

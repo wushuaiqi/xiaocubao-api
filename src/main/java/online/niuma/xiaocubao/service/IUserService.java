@@ -53,4 +53,11 @@ public interface IUserService extends UserDetailsService {
      * @return 用户更新后的信息
      */
     UserDto update(Long id, UpdateUserRequest updateUserRequest);
+
+    /**
+     * 根据id获取用户的信息
+     * @param id 用户的id
+     * @return 用户的信息
+     */
+    UserDto get(String id);
 }

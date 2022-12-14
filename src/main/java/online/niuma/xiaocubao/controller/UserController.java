@@ -47,4 +47,9 @@ public class UserController {
         return userMapper.toVo(userService.update(id, updateUserRequest));
     }
 
+    @GetMapping("/{id}")
+    public UserVo get(@PathVariable("id") String id) {
+        return userMapper.toVo(userService.get(id));
+    }
+
 }

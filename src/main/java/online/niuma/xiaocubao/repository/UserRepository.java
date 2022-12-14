@@ -17,6 +17,11 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserRepository extends BaseMapper<User> {
 
+    /**
+     * 根据用户名查询用户的信息
+     * @param username 用户名
+     * @return 所查询的用户信息
+     */
     UserDetail searchByUsernameDetail(@Param("username") String username);
 
 }
